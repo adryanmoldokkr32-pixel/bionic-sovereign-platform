@@ -1,43 +1,70 @@
-import React from 'react';
-import { ArrowRightLeft, ExternalLink } from 'lucide-react';
+"use client";
+
+import React, { useEffect, useState } from 'react';
+import { Bitcoin, Gold, Droplets, ArrowUpRight, ArrowDownRight } from 'lucide-react';
 
 const ArbitrageFeed = ({ t }: { t: any }) => {
-  const alerts = [
-    { asset: 'GOLD (XAU)', p1: 'CME', v1: '4816.2', p2: 'ICE', v2: '4822.8', spread: '+0.14%', status: 'PROFITABLE' },
-    { asset: 'OIL (BRENT)', p1: 'SPOT', v1: '96.18', p2: 'FUTURES', v2: '97.45', spread: '+1.32%', status: 'HIGH_VOLATILITY' },
-    { asset: 'GAS (NAT)', p1: 'HUB', v1: '2.62', p2: 'EUR_ICE', v2: '2.68', spread: '+2.29%', status: 'EXECUTING' },
-  ];
+  const [prices, setPrices] = useState([
+    { id: 'BTC', name: 'Bitcoin', symbol: <Bitcoin size={20} />, price: 68420.50, change: 1.2, type: 'crypto' },
+    { id: 'XAU', name: 'Gold', symbol: <span className="text-gold font-bold">Au</span>, price: 4879.60, change: -0.4, type: 'commodity' },
+    { id: 'OIL', name: 'Brent Oil', symbol: <Droplets size={20} />, price: 90.38, change: 2.1, type: 'commodity' },
+  ]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPrices(prev => prev.map(p => ({
+        ...p,
+        price: p.price + (Math.random() - 0.5) * 5,
+        change: p.change + (Math.random() - 0.5) * 0.1
+      })));
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section id="arbitrage" className="px-6 py-12">
       <div className="max-w-screen-xl mx-auto">
-        <div className="flex items-center gap-3 mb-10">
-          <ArrowRightLeft className="text-gold animate-spin-slow" />
-          <h2 className="text-2xl font-bold tracking-tight text-white">{t.arbitrage.title}</h2>
+        <div className="flex items-center justify-between mb-10">
+           <div className="flex items-center gap-3">
+              <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+              <h2 className="text-2xl font-bold tracking-tight text-white uppercase">{t.arbitrage.title}</h2>
+           </div>
+           <span className="text-[10px] font-black bg-white/5 border border-white/10 px-3 py-1 rounded-full text-gray-400">MARKET_STATUS: OPEN</span>
         </div>
-        <div className="space-y-4">
-          {alerts.map((a, i) => (
-            <div key={i} className="bg-white/5 border border-white/5 rounded-2xl p-5 flex flex-col md:flex-row md:items-center justify-between hover:bg-white/10 transition-all">
-              <div className="flex items-center gap-6 mb-4 md:mb-0">
-                <div className="min-w-[120px]">
-                   <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest">{t.arbitrage.asset}</p>
-                   <p className="text-lg font-bold text-white">{a.asset}</p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {prices.map((a) => (
+            <div key={a.id} className="group bg-gradient-to-br from-white/5 to-transparent border border-white/5 rounded-3xl p-6 hover:border-[#1DB954]/30 transition-all shadow-2xl">
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-black rounded-2xl flex items-center justify-center border border-white/5 text-gray-400">
+                    {a.symbol}
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-white">{a.name}</p>
+                    <p className="text-[10px] text-gray-600 font-mono">{a.id}/USD</p>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3 font-mono text-sm">
-                  <span className="px-2 py-1 bg-black/40 rounded border border-white/10 text-white">{a.p1}: ${a.v1}</span>
-                  <span className="text-gray-700">↔</span>
-                  <span className="px-2 py-1 bg-black/40 rounded border border-white/10 text-white">{a.p2}: ${a.v2}</span>
+                <div className={`flex items-center gap-1 text-xs font-bold ${a.change >= 0 ? 'text-[#1DB954]' : 'text-red-500'}`}>
+                  {a.change >= 0 ? <ArrowUpRight size={14} /> : <ArrowDownRight size={14} />}
+                  {Math.abs(a.change).toFixed(2)}%
                 </div>
               </div>
-              <div className="flex items-center justify-between md:justify-end gap-8">
-                 <div className="text-right">
-                    <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest">{t.arbitrage.spread}</p>
-                    <p className="text-lg font-black text-[#1DB954]">{a.spread}</p>
+              
+              <div className="space-y-1">
+                <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest">Current Price</p>
+                <p className="text-3xl font-black tracking-tighter text-white font-mono">
+                  ${a.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                </p>
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
+                 <div className="flex -space-x-2">
+                    {[1,2,3].map(i => <div key={i} className="w-6 h-6 rounded-full border-2 border-[#0a0a0a] bg-gray-800" />)}
                  </div>
-                 <div className={`px-3 py-1 rounded-full text-[9px] font-black tracking-tighter border ${a.status === 'EXECUTING' ? 'bg-[#1DB954]/20 border-[#1DB954] text-[#1DB954]' : 'bg-gold/20 border-gold text-gold'}`}>
-                    {a.status}
-                 </div>
-                 <ExternalLink size={14} className="text-gray-600 hidden md:block cursor-pointer hover:text-white transition-colors" />
+                 <button className="text-[10px] font-black uppercase text-[#1DB954] hover:underline tracking-widest">
+                    Analyze Flow
+                 </button>
               </div>
             </div>
           ))}

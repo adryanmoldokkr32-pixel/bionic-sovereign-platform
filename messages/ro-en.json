@@ -22,10 +22,11 @@
       "button": "Initiate Protocol"
     },
     "arbitrage": {
-      "title": "Live Arbitrage Sentinel",
+      "title": "Sovereign Market Intelligence",
       "asset": "Asset",
       "spread": "Spread",
-      "source": "Sources"
+      "source": "Sources",
+      "live": "LIVE"
     }
   },
   "ro": {
@@ -51,10 +52,11 @@
       "button": "Inițiază Protocolul"
     },
     "arbitrage": {
-      "title": "Sentinel Arbitraj Live",
+      "title": "Inteligență de Piață Suverană",
       "asset": "Activ",
       "spread": "Diferență",
-      "source": "Surse"
+      "source": "Surse",
+      "live": "LIVE"
     }
   }
 }

@@ -2,20 +2,32 @@ import React from 'react';
 
 const Hero = ({ t }: { t: any }) => {
   return (
-    <section className="relative pt-20 pb-16 px-6 overflow-hidden">
-      <div className="max-w-screen-xl mx-auto text-center">
-        <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-white via-gray-300 to-white bg-clip-text text-transparent mb-6 tracking-tight">
+    <section className="relative pt-32 pb-24 px-6 overflow-hidden">
+      <div className="max-w-screen-xl mx-auto text-center relative z-10">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
+           <span className="w-2 h-2 bg-[#1DB954] rounded-full animate-ping" />
+           <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">System Version 4.0 Alpha</span>
+        </div>
+        <h1 className="text-6xl md:text-8xl font-black bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent mb-8 tracking-tighter leading-[0.9]">
           {t.hero.title}
         </h1>
-        <p className="text-xl md:text-2xl text-gray-400 mb-10 max-w-2xl mx-auto">
+        <p className="text-xl md:text-2xl text-gray-500 mb-12 max-w-2xl mx-auto font-medium">
           {t.hero.subtitle}
         </p>
-        <button className="bg-[#1DB954] hover:bg-[#1ed760] text-black font-bold py-4 px-8 rounded-full text-lg transition-all transform hover:scale-105">
-          {t.hero.cta}
-        </button>
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+          <button className="w-full md:w-auto bg-white text-black font-black py-5 px-10 rounded-2xl text-sm uppercase tracking-widest hover:bg-[#1DB954] transition-all">
+            {t.hero.cta}
+          </button>
+          <button className="w-full md:w-auto bg-white/5 border border-white/10 text-white font-black py-5 px-10 rounded-2xl text-sm uppercase tracking-widest hover:bg-white/10 transition-all">
+            Documentation
+          </button>
+        </div>
       </div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-20">
-        <div className="w-[500px] h-[500px] bg-[#1DB954] rounded-full blur-[120px] shadow-2xl animate-pulse" />
+      
+      {/* Background Pro UI Elements */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10">
+        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-[#1DB954]/10 rounded-full blur-[120px] opacity-20" />
+        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       </div>
     </section>
   );
