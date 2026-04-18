@@ -1,13 +1,17 @@
 import React from 'react';
 
-const Layout = ({ children, locale }) => {
+export default function RootLayout({
+  children,
+  params: { locale },
+}: {
+  children: React.ReactNode;
+  params: { locale: string };
+}) {
   return (
     <html lang={locale}>
-      <body className="bg-[#0a0a0a] text-white antialiased font-sans">
+      <body className="bg-[#0a0a0a] text-white antialiased">
         {children}
       </body>
     </html>
   );
-};
-
-export default Layout;
+}
