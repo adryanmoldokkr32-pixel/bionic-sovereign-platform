@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { Bitcoin, Gold, Droplets, ArrowUpRight, ArrowDownRight } from 'lucide-react';
+import { Bitcoin, Coins, Droplets, ArrowUpRight, ArrowDownRight } from 'lucide-react';
 
 const ArbitrageFeed = ({ t }: { t: any }) => {
   const [prices, setPrices] = useState([
     { id: 'BTC', name: 'Bitcoin', symbol: <Bitcoin size={20} />, price: 68420.50, change: 1.2, type: 'crypto' },
-    { id: 'XAU', name: 'Gold', symbol: <span className="text-gold font-bold">Au</span>, price: 4879.60, change: -0.4, type: 'commodity' },
+    { id: 'XAU', name: 'Gold', symbol: <Coins size={20} className="text-gold" />, price: 4879.60, change: -0.4, type: 'commodity' },
     { id: 'OIL', name: 'Brent Oil', symbol: <Droplets size={20} />, price: 90.38, change: 2.1, type: 'commodity' },
   ]);
 
