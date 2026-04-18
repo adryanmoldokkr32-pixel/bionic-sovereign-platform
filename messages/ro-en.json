@@ -1,0 +1,24 @@
+{
+  "en": {
+    "hero": {
+      "title": "The Sovereign Operating System",
+      "subtitle": "Elite AI execution for the new digital economy.",
+      "cta": "View Live Ops"
+    },
+    "live_ops": {
+      "title": "Live Operations",
+      "status": "Active Agents"
+    }
+  },
+  "ro": {
+    "hero": {
+      "title": "Sistemul de Operare Suveran",
+      "subtitle": "Execuție AI de elită pentru noua economie digitală.",
+      "cta": "Vezi Operațiuni Live"
+    },
+    "live_ops": {
+      "title": "Operațiuni Live",
+      "status": "Agenți Activi"
+    }
+  }
+}
