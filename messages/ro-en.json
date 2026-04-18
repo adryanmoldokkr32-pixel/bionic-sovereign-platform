@@ -8,6 +8,18 @@
     "live_ops": {
       "title": "Live Operations",
       "status": "Active Agents"
+    },
+    "services": {
+      "title": "Elite Service Modules",
+      "subtitle": "179 Autonomous skills organized into 11 tactical clusters.",
+      "design": "Visual Identity & UI",
+      "infra": "Infrastructure & AI Eng",
+      "revenue": "Revenue & Sales Ops"
+    },
+    "onboarding": {
+      "title": "Agent Onboarding",
+      "placeholder": "Describe your objective...",
+      "button": "Initiate Protocol"
     }
   },
   "ro": {
@@ -19,6 +31,18 @@
     "live_ops": {
       "title": "Operațiuni Live",
       "status": "Agenți Activi"
+    },
+    "services": {
+      "title": "Module de Servicii de Elită",
+      "subtitle": "179 de skills autonome organizate în 11 clustere tactice.",
+      "design": "Identitate Vizuală & UI",
+      "infra": "Infrastructură & AI Eng",
+      "revenue": "Operațiuni de Venit și Vânzări"
+    },
+    "onboarding": {
+      "title": "Onboarding Agent",
+      "placeholder": "Descrie obiectivul tău...",
+      "button": "Inițiază Protocolul"
     }
   }
 }
