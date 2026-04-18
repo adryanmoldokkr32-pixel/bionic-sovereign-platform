@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Hero = ({ t }) => {
+const Hero = ({ t }: { t: any }) => {
   return (
     <section className="relative pt-20 pb-16 px-6 overflow-hidden">
       <div className="max-w-screen-xl mx-auto text-center">
-        <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-gold via-white to-gold bg-clip-text text-transparent mb-6 tracking-tight">
+        <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-white via-gray-300 to-white bg-clip-text text-transparent mb-6 tracking-tight">
           {t.hero.title}
         </h1>
         <p className="text-xl md:text-2xl text-gray-400 mb-10 max-w-2xl mx-auto">

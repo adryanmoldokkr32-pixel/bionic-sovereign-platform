@@ -3,11 +3,11 @@
 import React, { useState } from 'react';
 import { Send, Bot } from 'lucide-react';
 
-const OnboardingAgent = ({ t }) => {
+const OnboardingAgent = ({ t }: { t: any }) => {
   const [inputValue, setInputValue] = useState('');
 
   return (
-    <section className="px-6 py-20">
+    <section id="onboarding" className="px-6 py-20">
       <div className="max-w-3xl mx-auto">
         <div className="bg-[#111111] border border-white/10 rounded-3xl p-8 shadow-2xl relative overflow-hidden">
           <div className="flex items-center gap-4 mb-8">
@@ -32,7 +32,7 @@ const OnboardingAgent = ({ t }) => {
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               placeholder={t.onboarding.placeholder}
-              className="w-full bg-black border border-white/10 rounded-2xl py-4 px-6 text-sm focus:outline-none focus:border-[#1DB954] transition-colors placeholder:text-gray-700 font-mono"
+              className="w-full bg-black border border-white/10 rounded-2xl py-4 px-6 text-sm focus:outline-none focus:border-[#1DB954] transition-colors placeholder:text-gray-700 font-mono text-white"
             />
             <button className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 hover:bg-[#1DB954] hover:text-black rounded-xl flex items-center justify-center transition-all group">
               <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />

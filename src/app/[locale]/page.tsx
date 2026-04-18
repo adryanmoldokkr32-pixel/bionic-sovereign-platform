@@ -6,8 +6,9 @@ import OnboardingAgent from '@/components/OnboardingAgent';
 import ArbitrageFeed from '@/components/ArbitrageFeed';
 import translations from '@/../messages/ro-en.json';
 
-export default function LandingPage({ params: { locale } }) {
-  const t = translations[locale] || translations['en'];
+export default function LandingPage({ params }: { params: { locale: string } }) {
+  const locale = params.locale;
+  const t = (translations as any)[locale] || (translations as any)['en'];
 
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-white selection:bg-[#1DB954] selection:text-black">

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Activity, Shield, Terminal } from 'lucide-react';
 
-const LiveOperations = ({ t }) => {
+const LiveOperations = ({ t }: { t: any }) => {
   const ops = [
     { id: 1, agent: 'Sentinel', status: 'Scanning CME Market', icon: <Activity size={16} /> },
     { id: 2, agent: 'IdentityGuard', status: 'Zero-Trust Verified', icon: <Shield size={16} /> },
@@ -9,7 +9,7 @@ const LiveOperations = ({ t }) => {
   ];
 
   return (
-    <section className="px-6 py-12">
+    <section id="live-ops" className="px-6 py-12">
       <div className="max-w-screen-xl mx-auto">
         <div className="bg-[#111111]/80 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-2xl">
           <div className="flex items-center justify-between mb-8">

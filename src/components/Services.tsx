@@ -1,7 +1,7 @@
 import React from 'react';
 import { LayoutGrid, Cloud, TrendingUp, Cpu, ShieldCheck, Zap } from 'lucide-react';
 
-const Services = ({ t }) => {
+const Services = ({ t }: { t: any }) => {
   const clusters = [
     { title: t.services.design, icon: <LayoutGrid />, count: 20, color: 'from-blue-500' },
     { title: t.services.infra, icon: <Cloud />, count: 15, color: 'from-purple-500' },
@@ -12,7 +12,7 @@ const Services = ({ t }) => {
   ];
 
   return (
-    <section className="px-6 py-20 bg-gradient-to-b from-[#0a0a0a] to-[#0f0f0f]">
+    <section id="services" className="px-6 py-20 bg-gradient-to-b from-[#0a0a0a] to-[#0f0f0f]">
       <div className="max-w-screen-xl mx-auto text-center mb-16">
         <h2 className="text-3xl md:text-5xl font-bold mb-4">{t.services.title}</h2>
         <p className="text-gray-500">{t.services.subtitle}</p>
@@ -22,7 +22,7 @@ const Services = ({ t }) => {
           <div key={i} className="group relative p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-white/10 transition-all overflow-hidden">
             <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${c.color} to-transparent opacity-50`} />
             <div className="text-gray-400 mb-6 group-hover:scale-110 group-hover:text-white transition-transform">
-              {React.cloneElement(c.icon, { size: 32 })}
+              {React.cloneElement(c.icon as React.ReactElement, { size: 32 })}
             </div>
             <h3 className="text-xl font-bold mb-2">{c.title}</h3>
             <p className="text-sm text-gray-500">{c.count} Active Procedures</p>
