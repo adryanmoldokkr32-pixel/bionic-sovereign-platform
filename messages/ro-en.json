@@ -20,6 +20,12 @@
       "title": "Agent Onboarding",
       "placeholder": "Describe your objective...",
       "button": "Initiate Protocol"
+    },
+    "arbitrage": {
+      "title": "Live Arbitrage Sentinel",
+      "asset": "Asset",
+      "spread": "Spread",
+      "source": "Sources"
     }
   },
   "ro": {
@@ -43,6 +49,12 @@
       "title": "Onboarding Agent",
       "placeholder": "Descrie obiectivul tău...",
       "button": "Inițiază Protocolul"
+    },
+    "arbitrage": {
+      "title": "Sentinel Arbitraj Live",
+      "asset": "Activ",
+      "spread": "Diferență",
+      "source": "Surse"
     }
   }
 }

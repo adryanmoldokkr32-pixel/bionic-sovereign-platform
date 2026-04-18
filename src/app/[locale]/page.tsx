@@ -3,6 +3,7 @@ import Hero from '@/components/Hero';
 import LiveOperations from '@/components/LiveOperations';
 import Services from '@/components/Services';
 import OnboardingAgent from '@/components/OnboardingAgent';
+import ArbitrageFeed from '@/components/ArbitrageFeed';
 import translations from '@/../messages/ro-en.json';
 
 export default function LandingPage({ params: { locale } }) {
@@ -20,6 +21,7 @@ export default function LandingPage({ params: { locale } }) {
           <div className="flex items-center gap-6">
              <div className="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-widest text-gray-500">
                 <a href="#services" className="hover:text-white transition-colors">Services</a>
+                <a href="#arbitrage" className="hover:text-white transition-colors">Arbitrage</a>
                 <a href="#live-ops" className="hover:text-white transition-colors">Live Ops</a>
                 <a href="#onboarding" className="hover:text-white transition-colors">Onboarding</a>
              </div>
@@ -35,6 +37,8 @@ export default function LandingPage({ params: { locale } }) {
       <div id="hero"><Hero t={t} /></div>
       
       <div id="onboarding"><OnboardingAgent t={t} /></div>
+
+      <div id="arbitrage"><ArbitrageFeed t={t} /></div>
 
       <div id="services"><Services t={t} /></div>
       
