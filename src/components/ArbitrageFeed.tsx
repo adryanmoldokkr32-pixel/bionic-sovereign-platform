@@ -8,27 +8,25 @@ const BTCLiveTicker = () => {
   const [change, setChange] = useState<string | null>(null);
   const [side, setSide] = useState<'up' | 'down' | null>(null);
   const prevPrice = useRef<number>(0);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const ws = new WebSocket('wss://stream.binance.com:9443/ws/btcusdt@ticker');
-
     ws.onmessage = (event) => {
       const data = JSON.parse(event.data);
       const currentPrice = parseFloat(data.c);
-      
       if (currentPrice > prevPrice.current) setSide('up');
       else if (currentPrice < prevPrice.current) setSide('down');
-      
       setPrice(currentPrice.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
       setChange(data.P);
       prevPrice.current = currentPrice;
-
-      // Reset flash effect
       setTimeout(() => setSide(null), 300);
     };
-
     return () => ws.close();
   }, []);
+
+  if (!mounted) return <div className="h-[250px] bg-[#0a0a0a] border border-white/5 p-8 animate-pulse" />;
 
   return (
     <div className={`bg-[#0a0a0a] border border-white/5 p-8 h-[250px] transition-all flex flex-col group ${
@@ -40,15 +38,12 @@ const BTCLiveTicker = () => {
       </div>
       <div className="flex-1 flex flex-col justify-center">
          <p className="text-5xl font-black tracking-tighter text-white font-mono mb-2">
-           ${price || '75,700.00'}
+           ${price || '...'}
          </p>
          <div className={`flex items-center gap-1 text-[10px] font-black ${parseFloat(change || '0') >= 0 ? 'text-neon' : 'text-red-500'}`}>
             {parseFloat(change || '0') >= 0 ? <TrendingUp size={12} /> : <TrendingDown size={12} />}
             {change}% (24H)
          </div>
-      </div>
-      <div className="mt-4 h-1 w-full bg-white/5 rounded-full overflow-hidden">
-         <div className="h-full bg-neon w-1/3 animate-progress" />
       </div>
     </div>
   );
@@ -56,30 +51,22 @@ const BTCLiveTicker = () => {
 
 const TradingViewWidget = ({ symbol, title }: { symbol: string, title: string }) => {
   const container = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     if (!container.current) return;
     const script = document.createElement("script");
     script.src = "https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js";
     script.type = "text/javascript";
     script.async = true;
     script.innerHTML = JSON.stringify({
-      "symbol": symbol,
-      "width": "100%",
-      "height": "100%",
-      "locale": "en",
-      "dateRange": "1D",
-      "colorTheme": "dark",
-      "isTransparent": true,
-      "autosize": true,
-      "largeChartUrl": "",
-      "noTimeScale": false,
-      "chartOnly": false
+      "symbol": symbol, "width": "100%", "height": "100%", "locale": "en", "dateRange": "1D",
+      "colorTheme": "dark", "isTransparent": true, "autosize": true, "largeChartUrl": "",
+      "noTimeScale": false, "chartOnly": false
     });
     container.current.appendChild(script);
-    return () => {
-      if (container.current) container.current.innerHTML = "";
-    };
+    return () => { if (container.current) container.current.innerHTML = ""; };
   }, [symbol]);
 
   return (
@@ -94,6 +81,12 @@ const TradingViewWidget = ({ symbol, title }: { symbol: string, title: string })
 };
 
 const ArbitrageFeed = ({ t }: { t: any }) => {
+  const [time, setTime] = useState<string>('');
+
+  useEffect(() => {
+    setTime(new Date().toLocaleTimeString());
+  }, []);
+
   return (
     <section id="arbitrage" className="px-6 py-32 bg-black border-t border-white/5">
       <div className="max-w-screen-xl mx-auto">
@@ -108,8 +101,8 @@ const ArbitrageFeed = ({ t }: { t: any }) => {
               </h2>
            </div>
            <div className="font-mono text-[9px] text-silver/20 border-l border-white/10 pl-8 max-w-xs">
-              BTC_FEED: BINANCE_WEBSOCKET_ACTIVE<br/>
-              COMMODITY_FEED: DELAYED_15M (MARKET_CLOSED)
+              PROTOCOL_STATUS: ACTIVE<br/>
+              TIME_STAMP: {time || 'SYNCING...'}
            </div>
         </div>
         
@@ -117,21 +110,6 @@ const ArbitrageFeed = ({ t }: { t: any }) => {
           <BTCLiveTicker />
           <TradingViewWidget symbol="OANDA:XAUUSD" title="XAU / PRECIOUS METAL" />
           <TradingViewWidget symbol="TVC:UKOIL" title="BRENT / ENERGY CORE" />
-        </div>
-
-        <div className="mt-1 bg-white/[0.02] p-10 flex flex-col md:flex-row items-center justify-between gap-8">
-           <div className="flex items-center gap-6">
-              <div className="w-12 h-12 rounded-full border border-gold/20 flex items-center justify-center animate-spin-slow">
-                 <div className="w-2 h-2 bg-gold rounded-full" />
-              </div>
-              <div>
-                 <p className="text-gold font-black text-[10px] uppercase tracking-widest mb-1">Sentinel Neural Engine</p>
-                 <p className="text-silver/40 text-[9px] font-mono uppercase">Scanning for whale manipulation patterns in order flows...</p>
-              </div>
-           </div>
-           <button className="group relative px-10 py-4 bg-gold text-black font-black text-[10px] uppercase tracking-[0.2em] hover:bg-white transition-all">
-              Access Full Terminal
-           </button>
         </div>
       </div>
     </section>

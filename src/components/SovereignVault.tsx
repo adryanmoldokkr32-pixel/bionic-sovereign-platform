@@ -1,14 +1,18 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Shield, Key, Eye, Play } from 'lucide-react';
 
 const SovereignVault = ({ t }: { t: any }) => {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null;
+
   return (
     <section id="vault" className="px-6 py-20 bg-black">
       <div className="max-w-screen-xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Personal Dashboard Area */}
           <div className="bg-darkGrey border border-gold/20 p-10 rounded-none skew-x-[-2deg] shadow-[0_0_50px_rgba(212,175,55,0.05)]">
             <div className="flex items-center gap-4 mb-10">
               <div className="w-12 h-12 bg-gold/10 flex items-center justify-center border border-gold/30">
@@ -36,7 +40,6 @@ const SovereignVault = ({ t }: { t: any }) => {
             </div>
           </div>
 
-          {/* Media Factory Quick-Access */}
           <div className="bg-darkGrey border border-white/5 p-10 flex flex-col justify-between">
             <div>
               <h2 className="text-4xl font-black text-white uppercase italic mb-4">{t.factory.title}</h2>
