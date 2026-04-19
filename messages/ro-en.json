@@ -3,60 +3,32 @@
     "hero": {
       "title": "The Sovereign Operating System",
       "subtitle": "Elite AI execution for the new digital economy.",
-      "cta": "View Live Ops"
+      "cta": "Initiate Terminal"
     },
-    "live_ops": {
-      "title": "Live Operations",
-      "status": "Active Agents"
+    "vault": {
+      "title": "Your Sovereign Vault",
+      "balance": "Managed Liquidity",
+      "status": "Defense Active"
     },
-    "services": {
-      "title": "Elite Service Modules",
-      "subtitle": "179 Autonomous skills organized into 11 tactical clusters.",
-      "design": "Visual Identity & UI",
-      "infra": "Infrastructure & AI Eng",
-      "revenue": "Revenue & Sales Ops"
-    },
-    "onboarding": {
-      "title": "Agent Onboarding",
-      "placeholder": "Describe your objective...",
-      "button": "Initiate Protocol"
-    },
-    "arbitrage": {
-      "title": "Sovereign Market Intelligence",
-      "asset": "Asset",
-      "spread": "Spread",
-      "source": "Sources",
-      "live": "LIVE"
+    "factory": {
+      "title": "8K Media Factory",
+      "cta": "Generate Viral Clip"
     }
   },
   "ro": {
     "hero": {
       "title": "Sistemul de Operare Suveran",
       "subtitle": "Execuție AI de elită pentru noua economie digitală.",
-      "cta": "Vezi Operațiuni Live"
+      "cta": "Inițiază Terminalul"
     },
-    "live_ops": {
-      "title": "Operațiuni Live",
-      "status": "Agenți Activi"
+    "vault": {
+      "title": "Seiful Tău Suveran",
+      "balance": "Lichiditate Gestionată",
+      "status": "Apărare Activă"
     },
-    "services": {
-      "title": "Module de Servicii de Elită",
-      "subtitle": "179 de skills autonome organizate în 11 clustere tactice.",
-      "design": "Identitate Vizuală & UI",
-      "infra": "Infrastructură & AI Eng",
-      "revenue": "Operațiuni de Venit și Vânzări"
-    },
-    "onboarding": {
-      "title": "Onboarding Agent",
-      "placeholder": "Descrie obiectivul tău...",
-      "button": "Inițiază Protocolul"
-    },
-    "arbitrage": {
-      "title": "Inteligență de Piață Suverană",
-      "asset": "Activ",
-      "spread": "Diferență",
-      "source": "Surse",
-      "live": "LIVE"
+    "factory": {
+      "title": "Fabrica Media 8K",
+      "cta": "Generează Clip Viral"
     }
   }
 }
