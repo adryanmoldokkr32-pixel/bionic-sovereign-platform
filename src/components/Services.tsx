@@ -3,36 +3,27 @@ import { LayoutGrid, Cloud, TrendingUp, Cpu, ShieldCheck, Zap } from 'lucide-rea
 
 const Services = ({ t }: { t: any }) => {
   const clusters = [
-    { title: t.services.design, icon: <LayoutGrid />, count: 20, color: 'from-blue-500' },
-    { title: t.services.infra, icon: <Cloud />, count: 15, color: 'from-purple-500' },
-    { title: t.services.revenue, icon: <TrendingUp />, count: 15, color: 'from-[#1DB954]' },
-    { title: 'Intelligence & Management', icon: <Cpu />, count: 25, color: 'from-gold' },
-    { title: 'Advanced Mechanics', icon: <ShieldCheck />, count: 30, color: 'from-red-500' },
-    { title: 'Sovereign Elite', icon: <Zap />, count: 14, color: 'from-yellow-400' },
+    { title: t.services.design, count: 20, color: 'bg-gold' },
+    { title: t.services.infra, count: 15, color: 'bg-silver' },
+    { title: t.services.revenue, count: 15, color: 'bg-neon' },
+    { title: 'Intelligence', count: 25, color: 'bg-gold' },
+    { title: 'Mechanics', count: 30, color: 'bg-silver' },
+    { title: 'Elite', count: 14, color: 'bg-neon' },
   ];
 
   return (
-    <section id="services" className="px-6 py-20 bg-gradient-to-b from-[#0a0a0a] to-[#0f0f0f]">
-      <div className="max-w-screen-xl mx-auto text-center mb-16">
-        <h2 className="text-3xl md:text-5xl font-bold mb-4">{t.services.title}</h2>
-        <p className="text-gray-500">{t.services.subtitle}</p>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-screen-xl mx-auto">
-        {clusters.map((c, i) => (
-          <div key={i} className="group relative p-8 rounded-3xl bg-white/5 border border-white/5 hover:border-white/10 transition-all overflow-hidden">
-            <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${c.color} to-transparent opacity-50`} />
-            <div className="text-gray-400 mb-6 group-hover:scale-110 group-hover:text-white transition-transform">
-              {React.cloneElement(c.icon as React.ReactElement, { size: 32 })}
+    <section className="px-6 py-32 bg-black border-t border-white/5">
+      <div className="max-w-screen-xl mx-auto">
+        <h2 className="text-5xl md:text-7xl font-black mb-20 text-white italic tracking-tighter">CAPABILITIES</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-white/5">
+          {clusters.map((c, i) => (
+            <div key={i} className="bg-black p-8 group hover:bg-white/[0.03] transition-all">
+               <div className={`w-8 h-[2px] ${c.color} mb-6`} />
+               <h3 className="text-xs font-black text-white uppercase tracking-widest mb-2">{c.title}</h3>
+               <p className="text-[10px] text-silver/30 font-mono">PRO_SC_{c.count}</p>
             </div>
-            <h3 className="text-xl font-bold mb-2">{c.title}</h3>
-            <p className="text-sm text-gray-500">{c.count} Active Procedures</p>
-            <div className="mt-6 flex gap-2">
-              <div className="h-1 w-1/3 bg-white/10 rounded-full overflow-hidden">
-                <div className={`h-full bg-gradient-to-r ${c.color} to-white w-full animate-pulse`} />
-              </div>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

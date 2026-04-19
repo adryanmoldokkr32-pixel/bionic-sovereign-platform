@@ -9,17 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        black: "#000000",
         gold: "#D4AF37",
+        silver: "#E5E4E2",
+        neon: "#39FF14",
+        darkGrey: "#0a0a0a",
       },
       animation: {
-        'spin-slow': 'spin 8s linear infinite',
-        'progress': 'progress 2s ease-in-out infinite',
+        'spin-slow': 'spin 12s linear infinite',
+        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
-      keyframes: {
-        progress: {
-          '0%': { width: '0%' },
-          '100%': { width: '100%' },
-        }
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'glass': 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%)',
       }
     },
   },
